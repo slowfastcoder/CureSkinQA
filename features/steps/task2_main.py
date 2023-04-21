@@ -16,12 +16,14 @@ def open_main(context):
 def search_product(context, product):
     context.app.main_page.click_productbtn()
 
-@when('select Face Wash')
-def search_product(context):
-    pass #if we click on it, the face wash title dissapears
 
-@then('verify that {product}" is shown')
-def verifyText(context, product):
+@when('select "{product}"')
+def select_facewash(context, product):
     context.app.main_page.verifyText(product)
+
+
+@then('verify url contains "{name}" is shown')
+def verifyurl(context, name):
+    context.app.main_page.verifyUrl(name);
 
 

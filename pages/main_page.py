@@ -23,7 +23,12 @@ class MainPage(Page):
 
 
     def verifyText(self, expectedText):
-        self.verify_element_text(expectedText, *self.ExpectedTextLoc)
+        self.wait_for_element_appear(*self.ExpectedTextLoc)
+        self.click(*self.ExpectedTextLoc)
+        #self.verify_element_text(expectedText, *self.ExpectedTextLoc)
+
+    def verifyUrl(self, expectedquery):
+        self.verify_url_contains_query(expectedquery)
 
 
 
