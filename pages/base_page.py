@@ -44,6 +44,12 @@ class Page:
         assert expected_text == actual_text, \
             f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
 
+    def verify_element_attribute_value(self, expected_text, *locator):
+        actual_text = self.driver.find_element(*locator).get_attribute('value')
+        assert expected_text == actual_text, \
+            f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
+
+
     def verify_partial_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
         assert expected_text in actual_text, \
