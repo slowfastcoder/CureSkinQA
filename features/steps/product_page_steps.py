@@ -25,10 +25,11 @@ def verify_qty(context, qty):
 @when('the user increments the quantity by {qty}')
 def increment_qty(context, qty):
     context.app.product_page.increment_quantity(qty)
+    context.app.product_page.verify_price1()
 
-@then('verify that price has doubled')
-def verify_price(context):
-    context.app.product_page.verify_price()
+@then('verify that price has doubled by {qty}')
+def verify_price(context,qty):
+    context.app.product_page.verify_price_double(qty)
 
 @then('verify that the product quantity is set to {quantity}')
 def verify_qty2(context, quantity):

@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
@@ -21,7 +23,8 @@ class ProductPage(Page):
     MINI_CART = (By.CLASS_NAME, "mini-cart__inner")
     SUB_TOTAL = (By.CLASS_NAME, "subtotal")
     QUANTITY_INPUT = (By.CLASS_NAME, "quantity__input")
-    SUB_TOTAL_PRICE = (By.CLASS_NAME, "mini-cart-subtotal")
+    INDIVIDUAL_PRICE = (By.CLASS_NAME, "price")
+    SUB_TOTAL_PRICE = (By.ID, "mini-cart-subtotal")
     INCREMENT_BUTTON = (By.NAME, "plus")
 
 
@@ -54,7 +57,7 @@ class ProductPage(Page):
         self.wait_for_element_appear(*self.MINI_CART)
         #self.verify_partial_text(text *self.SUB_TOTAL)
 
-    def verify_price(self):
+    def verify_price1(self):
         self.wait_for_element_appear(*self.MINI_CART)
         #self.verify_element_text(*self.QUANTITY_INPUT, qty)
         self.wait_for_element_appear(*self.SUB_TOTAL_PRICE)
@@ -62,12 +65,30 @@ class ProductPage(Page):
         print(currenttotalprice.text)
         SAVE_PRICE = currenttotalprice.text
 
+    def verify_price_double(self,qty):
+        self.wait_for_element_appear(*self.MINI_CART)
+        self.wait_for_element_appear(*self.SUB_TOTAL_PRICE)
+        current_price = self.find_element(*self.INDIVIDUAL_PRICE)
+        new_price = self.find_element(*self.SUB_TOTAL_PRICE)
+        print(new_price.text.strip("Rs. "))
+        print(f'{current_price.text} + saved price {SAVE_PRICE} + new price {new_price.text}')
+
+        double_price = float(2*current_price.text.strip("Rs. ")) * qty
+        print(double_price)
+
+        if float(new_price.text.strip("Rs. ")) == double_price:
+            print("Passed")
+        else:
+            print("failed")
+
     def increment_quantity(self, qty):
         #i = 0
         #while i < int(qty):
             self.wait_for_element_appear(*self.INCREMENT_BUTTON)
             self.wait_for_element_click(*self.INCREMENT_BUTTON)
             #i = i+i
+            #self.verify_price()
+            time.sleep(5)
 
     def verify_qty1(self,qty):
         self.verify_element_attribute_value(qty, *self.QUANTITY_INPUT)

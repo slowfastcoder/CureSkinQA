@@ -14,5 +14,5 @@ Feature: Users can navigate to the product page and click add to cart
     When user clicks on Add to Cart
     And the cart side bar opens
     And the user increments the quantity by 1
-    Then verify that price has doubled
     Then verify that the product quantity is set to 2
+    Then verify that price has doubled by 2
