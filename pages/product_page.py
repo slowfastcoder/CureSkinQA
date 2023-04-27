@@ -65,7 +65,7 @@ class ProductPage(Page):
         print(currenttotalprice.text)
         SAVE_PRICE = currenttotalprice.text
 
-    def verify_price_double(self,qty):
+    def verify_price_double(self, qty):
         self.wait_for_element_appear(*self.MINI_CART)
         self.wait_for_element_appear(*self.SUB_TOTAL_PRICE)
         current_price = self.find_element(*self.INDIVIDUAL_PRICE)
@@ -73,7 +73,7 @@ class ProductPage(Page):
         print(new_price.text.strip("Rs. "))
         print(f'{current_price.text} + saved price {SAVE_PRICE} + new price {new_price.text}')
 
-        double_price = float(2*current_price.text.strip("Rs. ")) * qty
+        double_price = float(current_price.text.strip("Rs. ")) * float(qty)
         print(double_price)
 
         if float(new_price.text.strip("Rs. ")) == double_price:
@@ -90,7 +90,7 @@ class ProductPage(Page):
             #self.verify_price()
             time.sleep(5)
 
-    def verify_qty1(self,qty):
+    def verify_qty1(self, qty):
         self.verify_element_attribute_value(qty, *self.QUANTITY_INPUT)
 
 
