@@ -10,9 +10,14 @@ class MainPage(Page):
     labelXpath = (By.XPATH,"//*[@class='label']")
     SearchProductBtn = (By.LINK_TEXT, "Shop by Product")
     ExpectedTextLoc = (By.XPATH, "//*[@data-title='Face Washes']")
+    POPUP_CLOSE = (By.CLASS_NAME, "popup-close")
 
     def open_main(self):
         self.open_url()
+
+    def close_popup(self):
+        if self.wait_for_element_appear(*self.POPUP_CLOSE):
+            self.click(*self.POPUP_CLOSE)
 
     def click_productbtn(self):
         listofButtons = self.find_elements(*self.labelXpath)

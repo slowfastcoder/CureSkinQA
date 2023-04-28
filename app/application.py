@@ -1,7 +1,6 @@
 from pages.main_page import MainPage
-from pages.cart_page import CartPage
 from pages.product_page import ProductPage
-
+from pages.cart_page import CartPage
 
 
 class Application:
@@ -11,3 +10,4 @@ class Application:
         self.main_page = MainPage(self.driver)
         self.cart_page = CartPage(self.driver)
         self.product_page = ProductPage(self.driver)
+        self.cart_page = CartPage(self.driver)

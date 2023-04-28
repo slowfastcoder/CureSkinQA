@@ -35,8 +35,8 @@ class ProductPage(Page):
         #self.click(*self.SEARCH_BUTTON)
         #self.input_text(search_key, *self.SEARCH_TEXT)
 
-        if self.wait_for_element_appear(*self.POPUP_CLOSE):
-            self.click(*self.POPUP_CLOSE)
+        #if self.wait_for_element_appear(*self.POPUP_CLOSE):
+        #    self.click(*self.POPUP_CLOSE)
 
         if self.wait_for_element_appear(*self.SEARCH_BUTTON):
             self.click(*self.SEARCH_BUTTON)
@@ -53,7 +53,7 @@ class ProductPage(Page):
     def add_cart(self):
         self.wait_for_element_click(*self.ADD_CART)
 
-    def verify_cart_sidebar(self, text):
+    def verify_cart_sidebar(self):
         self.wait_for_element_appear(*self.MINI_CART)
         #self.verify_partial_text(text *self.SUB_TOTAL)
 

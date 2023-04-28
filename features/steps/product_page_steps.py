@@ -15,8 +15,8 @@ def select_product(context):
 
 @when('the cart side bar opens')
 def verify_cart_page_check(context):
-    sleep(30)
-    context.app.product_page.verify_cart_sidebar("Sub")
+    sleep(10)
+    context.app.product_page.verify_cart_sidebar()
 
 @then('Verify that correct quantity of {qty} is added')
 def verify_qty(context, qty):
