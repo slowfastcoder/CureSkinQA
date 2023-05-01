@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from selenium.webdriver.support import expected_conditions as EC
@@ -6,6 +8,7 @@ from time import sleep
 @given('user searches for {product} product')
 def search(context, product):
     context.app.product_page.search_product(product)
+    time.sleep(5)
     context.app.product_page.select_product()
 
 @when('user clicks on Add to Cart')

@@ -10,7 +10,7 @@ FOOTER_LINKS = (By.CSS_SELECTOR, '.navFooterDescItem a')
 @given('open the main page')
 def open_main(context):
     context.app.main_page.open_main()
-    context.app.main_page.close_popup()
+    #context.app.main_page.close_popup() #popup doesn't appear in headless mode
 
 
 @when('click on shop by {product}')

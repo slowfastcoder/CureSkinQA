@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from app.application import Application
 
 
@@ -8,9 +8,28 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    context.driver = webdriver.Chrome(executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe')
-    # context.browser = webdriver.Safari()
-    # context.browser = webdriver.Firefox()
+    #context.driver = webdriver.Chrome(executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe')
+    #context.driver = webdriver.Chrome(executable_path='I:/seleniumdrivers/chrome/chromedriver')
+
+
+    #context.browser = webdriver.Safari()
+    #context.browser = webdriver.Firefox()
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument('--start-maximized')
+    context.driver = webdriver.Chrome(chrome_options=options, executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe')
+
+
+    options2 = webdriver.FirefoxOptions()
+    options2.add_argument("-headless")
+    options2.add_argument('--window-size=1920,1080')
+    options2.add_argument('--start-maximized')
+    firefox_binary = FirefoxBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe")
+    #options2.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
+    context.driver = webdriver.Firefox(options=options2, firefox_binary=firefox_binary, executable_path='I:\seleniumdrivers\\firefox0.33\geckodriver.exe')
+
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
