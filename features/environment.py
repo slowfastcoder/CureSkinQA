@@ -13,13 +13,16 @@ def browser_init(context, test_name):
     #context.driver = webdriver.Chrome(executable_path='I:/seleniumdrivers/chrome/chromedriver')
 
 #mobile emulator
-    mobile_emulation = {"deviceName": "Nexus 5"}
+    mobile_emulation = {"deviceName": "Nexus 7"}
 
     chrome_options = webdriver.ChromeOptions()
 
     chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-
-    context.driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=chrome_options.to_capabilities())
+    context.driver = webdriver.Chrome(
+         executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe', chrome_options=chrome_options)
+   # context.driver = webdriver.Chrome(
+   #     executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe', desired_capabilities=chrome_options.to_capabilities())
+    #context.driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=chrome_options.to_capabilities())
 
 
     #context.browser = webdriver.Safari()

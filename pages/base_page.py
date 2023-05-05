@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
 
 
@@ -50,6 +51,13 @@ class Page:
         actual_text = self.driver.find_element(*locator).get_attribute('value')
         assert expected_text == actual_text, \
             f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
+
+    def action_chains_click(self, *locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(*locator)
+        action.click()
+        action.perform()
+
 
 
     def verify_partial_text(self, expected_text, *locator):
