@@ -6,10 +6,20 @@ from app.application import Application
 
 def browser_init(context, test_name):
     """
+    :param test_name:
     :param context: Behave context
     """
     #context.driver = webdriver.Chrome(executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe')
     #context.driver = webdriver.Chrome(executable_path='I:/seleniumdrivers/chrome/chromedriver')
+
+#mobile emulator
+    mobile_emulation = {"deviceName": "Nexus 5"}
+
+    chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+    context.driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=chrome_options.to_capabilities())
 
 
     #context.browser = webdriver.Safari()
@@ -36,7 +46,7 @@ def browser_init(context, test_name):
     #options.add_argument('--window-size=1920,1080')
     #options.add_argument('--start-maximized')
 
-    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    #context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
     context.driver.maximize_window()
     context.driver.implicitly_wait(5)
     context.driver.wait = WebDriverWait(context.driver, 10)
