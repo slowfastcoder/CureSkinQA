@@ -13,7 +13,7 @@ def click_menu(context):
 def click_menu(context):
     context.app.main_page.click_productmobile()
 
-@when('select "Face Wash" on mobile')
+@when('select Face Washes on mobile')
 def click_menu(context):
-    time.sleep(30)
-    context.app.main_page.expandmenu.click_faceWashMobile()
+    time.sleep(5)
+    context.app.main_page.click_faceWashMobile()

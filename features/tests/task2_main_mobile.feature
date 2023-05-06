@@ -5,5 +5,5 @@ Feature: Open the main page and navigate to a tab in mobile emulator
     Given open the main page
     When User clicks on the hamburger icon
     When clicks on shop by product on the mobile
-    And select "Face Wash" on mobile
+    And select Face Washes on mobile
     Then verify url contains "face-wash" is shown

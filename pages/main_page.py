@@ -11,6 +11,7 @@ class MainPage(Page):
     #locators on the mainpage
     labelXpath = (By.XPATH,"//*[@class='label']")
     SearchProductBtn = (By.XPATH, "//*[contains(text(),'Shop by Product')]")
+    SEARCHMOBILEBTN = (By.CLASS_NAME, "header__search")
     FaceWashMobileBtn = (By.XPATH, "//*[contains(text(),'Face Washes')]")
 
     listofButtons = (By.XPATH, "//*[@class='menu-drawer__menu-item list-menu__item focus-inset']") #[7] is fashwash
@@ -25,6 +26,9 @@ class MainPage(Page):
     def expandmenu(self):
         self.click(*self.HAMBURGER_ICON)
 
+    def clicksearchmobile(self):
+        self.click(*self.SEARCHMOBILEBTN)
+
     def close_popup(self):
         if self.wait_for_element_appear(*self.POPUP_CLOSE):
             self.click(*self.POPUP_CLOSE)
@@ -34,12 +38,12 @@ class MainPage(Page):
         self.click(*self.SearchProductBtn)
 
     def click_faceWashMobile(self):
-        time.sleep(10)
-        #self.wait_for_element_click(*self.FaceWashMobileBtn)
-        #self.click(*self.FaceWashMobileBtn)
+        time.sleep(6)
+        self.wait_for_element_click(*self.FaceWashMobileBtn)
+        self.click(*self.FaceWashMobileBtn)
         #listofButtons = self.find_elements(*self.listofButtons)
         #listofButtons[7].click() #7 is fashwash in mobile
-        self.action_chains_click(*self.FaceWashMobileBtn)
+        #self.action_chains_click(*self.FaceWashMobileBtn)
 
 
 

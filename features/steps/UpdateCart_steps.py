@@ -11,3 +11,8 @@ def decrement_qty(context):
 def verify_empty(context):
     sleep(5)
     context.app.cart_page.verify_emp()
+
+@when('user clicks on the search icon via mobile')
+def click_search(context):
+    context.app.main_page.clicksearchmobile()
+

@@ -13,10 +13,9 @@ def browser_init(context, test_name):
     #context.driver = webdriver.Chrome(executable_path='I:/seleniumdrivers/chrome/chromedriver')
 
 #mobile emulator
-    mobile_emulation = {"deviceName": "Nexus 7"}
-
+    mobile_emulation = {"deviceName": "iPhone 12 Pro"}
+    #mobile_emulation = {"deviceName": "Nexus 7"}
     chrome_options = webdriver.ChromeOptions()
-
     chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
     context.driver = webdriver.Chrome(
          executable_path='I:\python bdd automation course\chromdriver 4.19.23\chromedriver.exe', chrome_options=chrome_options)
